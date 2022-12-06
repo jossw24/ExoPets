@@ -10,7 +10,7 @@ Public methods:
 
 <%!
 	// User id, password, and server information
-	private String url = "jdbc:sqlserver://cosc304_sqlserver:1433;TrustServerCertificate=True";
+	private String url = "jdbc:sqlserver://cosc304_sqlserver:1433; DatabaseName = orders; TrustServerCertificate=True";
 	private String uid = "sa";
 	private String pw = "304#sa#pw";
 
