@@ -11,7 +11,10 @@
 <head>
 <title>YOUR NAME Grocery Shipment Processing</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
         
 <%@ include file="header.jsp" %>
 

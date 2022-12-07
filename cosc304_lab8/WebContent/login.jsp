@@ -3,7 +3,10 @@
 <head>
 <title>Login Screen</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 
 <div style="margin:0 auto;text-align:center;display:inline">
 

@@ -8,7 +8,10 @@
 <title>Ray's Grocery - Product Information</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 
 <%@ include file="header.jsp" %>
 

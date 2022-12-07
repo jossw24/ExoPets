@@ -6,7 +6,10 @@
 <head>
 <title>Administrator Page</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 
 <%
 String userName = (String) session.getAttribute("authenticatedUser");   

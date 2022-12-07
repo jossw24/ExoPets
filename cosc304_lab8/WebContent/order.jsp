@@ -12,7 +12,10 @@
 <head>
 <title>YOUR NAME Grocery Order Processing</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 <%
 // Get customer id
 String custId = request.getParameter("customerId");

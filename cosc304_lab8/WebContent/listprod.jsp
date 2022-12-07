@@ -7,7 +7,10 @@
 <head>
 <title>YOUR NAME Grocery</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 
 <h1>Search for the products you want to buy:</h1>
 

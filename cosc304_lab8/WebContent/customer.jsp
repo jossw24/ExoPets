@@ -3,7 +3,10 @@
 <head>
 <title>Customer Page</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 	<h2>Customer Profile</h2>
 
 <%@ include file="auth.jsp"%>

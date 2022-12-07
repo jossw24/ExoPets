@@ -6,7 +6,10 @@
 <head>
 <title>YOUR NAME Grocery Order List</title>
 </head>
-<body>
+<body
+            
+style = "background-color: lightblue;"
+></body>
 
 <h1>Order List</h1>
 
