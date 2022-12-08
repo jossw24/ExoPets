@@ -25,9 +25,10 @@ style = "background-color: lightblue;"
 
 
                 <div style="text-align: center;">
-                        <img src="img/capybara-square-1.jpg.optimal.jpg" width="280" height="250" z-index: 1;" />
-                        <img src="img/download.jpg" width="300" height="250" z-index: 1;" />
-                        <img src="img/SeaQuests-Guide-to-Axolotls-img-900x450.webp" width="305" height="250" z-index: 1;" />
+                        <img src="img/capybara-square-1.jpg.optimal.jpg" width="280" height="250" z-index: 1; border: 4px solid purple;"" />
+                        <img src="img/download.jpg" width="300" height="250" z-index: 1; border: 4px solid purple;" />
+                        <img src="img/SeaQuests-Guide-to-Axolotls-img-900x450.webp" width="305" height="250" z-index: 1; border: 4px solid purple;" />
+                      </div>
 </div>
 </body>
 </head>
