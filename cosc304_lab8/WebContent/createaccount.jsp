@@ -21,7 +21,7 @@ style = "background-color: lightblue;"
     %>
     
     <br>
-    <form action = "listprod.jsp" name="MyForm" method=get >
+    <form  name="MyForm" method=get >
     <table style="display:inline">
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">First Name:</font></div></td>
@@ -70,6 +70,15 @@ style = "background-color: lightblue;"
     </table>
     <br/>
     <input class="submit" type="submit" name="Submit2" value="Create Account" >
+    
+    
+    
+    
+    
+    
+    <p style = "text-align: center" ><span style = "font-family:monospace;font-size:45px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
+        border-color:#0e0d0d; border-radius:15px">
+                <a href="index.jsp"> Start Shopping</a> </span></p>
 
 
     </form>
