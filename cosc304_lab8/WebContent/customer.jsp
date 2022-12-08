@@ -40,13 +40,25 @@ try {
 		out.print("<tr><td><b>User Id</b></td><td>" + rst.getString(11) + "</td></tr>");
 	} 
 	out.print("</table>"); 
+	
 } catch (SQLException e) { 
 	out.println(e); 
-} finally { 
+} 
+
+finally { 
 	closeConnection();
 }
 // Make sure to close connection
+
 %>
+<a href = "editinfo.jsp">
+
+	<input type = "button" value = "Edit Info">
+</a> <br>
+<a href="listprod.jsp"> 
+	
+	<input type = "button" value = "Main Page">
+</a>
 
 </body>
 </html>
