@@ -24,8 +24,11 @@ style = "background-color: lightblue;"
                 <a href="createaccount.jsp"> Create Account</a> </span></p>
 
 
-<img src="img/capybara-square-1.jpg.optimal.jpg" width="280" height = "250" align = "position:absolute;margin-top:150px;left:100px;z-index:1;" /><img src="img/download.jpg" width="300" height = "250" align = "position:absolute;margin-top:150px;center:100px;z-index:1;" /><img src="img/SeaQuests-Guide-to-Axolotls-img-900x450.webp" width="305" height = "250" align = "position:absolute;margin-top:150px;right:100px;z-index:1;" />
-                        
+                <div style="text-align: center;">
+                        <img src="img/capybara-square-1.jpg.optimal.jpg" width="280" height="250" z-index: 1;" />
+                        <img src="img/download.jpg" width="300" height="250" z-index: 1;" />
+                        <img src="img/SeaQuests-Guide-to-Axolotls-img-900x450.webp" width="305" height="250" z-index: 1;" />
+</div>
 </body>
 </head>
 
