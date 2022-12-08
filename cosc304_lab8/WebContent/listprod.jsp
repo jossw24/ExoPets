@@ -16,9 +16,6 @@
 		  width: 100%;
 		}
 
-		li {
-		  float: right;
-		}
 
 		li a {
 		  display: block;
@@ -41,10 +38,13 @@
 <body style = "background-color: lightblue;">
 
 <ul>
-	<li><a href="logout.jsp">Log Out</a></li>
-	<li><a href="listorder.jsp">Your Orders</a></li>
-	<li><a href="customer.jsp">Info</a></li>
-	<li><a class="active" href="listprod.jsp">Main</a></li>
+	<li style="float:left;"><a>EXOPETS</a></li> 
+	<% String user = (String) session.getAttribute("authenticatedUser"); out.print("<li style=\"float:left;\"><a>User: " + user + "</a></li>");%>
+	<li style="float:right;"><a href="logout.jsp">Log Out</a></li>
+	<li style="float:right;"><a href="listorder.jsp">Your Orders</a></li>
+	<li style="float:right;"><a href="showcart.jsp">Your Cart</a></li>
+	<li style="float:right;"><a href="customer.jsp">Info</a></li>
+	<li style="float:right;"><a class="active" href="listprod.jsp">Main</a></li>
 </ul>
 
 <h1>Search for the products you want to buy:</h1>
@@ -70,11 +70,11 @@ String name = request.getParameter("productName");
 String catName = request.getParameter("categoryName"); 
 // Set header 
 String prodHeader;  
-if ((name == null | name == "") && catName == null)
+if((name == null | name == "") && (catName == null))
 	prodHeader = "All Products";
-else if((name == null | name == "") && catName != null)
+else if((name == null | name == "") && (catName != null))
 	prodHeader = "All Products in category: \"" + catName + "\""; 
-else if(catName == null) 
+else if(catName == null | catName.equals("All")) 
 	prodHeader = "All Products containing: \"" + name + "\"";
 else 
 	prodHeader = "All Products containing: \"" + name + "\" in category: \"" + catName + "\"";   
@@ -91,14 +91,14 @@ catch (java.lang.ClassNotFoundException e)
 	out.println("ClassNotFoundException: " +e);
 }
 
-if (catName == null | catName == "All") 
+if (catName == null || catName.equals("All")) 
 	catName = "%";
 
 // Variable name now contains the search string the user entered
 // Use it to build a query and print out the resultset.  Make sure to use PreparedStatement!  
 
 NumberFormat currFormat = NumberFormat.getCurrencyInstance(); 
-String query = "SELECT productId, productName, categoryName, productPrice FROM product p, category c WHERE p.categoryId = c.categoryId AND productName LIKE ? AND categoryName LIKE ?"; 
+String query = "SELECT productId, productName, categoryName, productPrice, productImageURL FROM product p, category c WHERE p.categoryId = c.categoryId AND productName LIKE ? AND categoryName LIKE ?"; 
 
 // Make the connection
 	try {
@@ -114,15 +114,16 @@ String query = "SELECT productId, productName, categoryName, productPrice FROM p
 
 		pstmt.setString(2, catName); 
 		ResultSet rst = pstmt.executeQuery();  
-		out.println("<table border=\"1\"><tr><th></th><th>Product Name</th><th>Category</th><th>Price</th></tr>");
+		out.println("<table border=\"1\"><tr><th>Image</th><th>Product Name</th><th>Category</th><th>Price</th></tr>");
 		while(rst.next()) {   
 			// Print out the ResultSet
 			int id = rst.getInt(1);
 			String pname = rst.getString(2);  
 			String cname = rst.getString(3); 
 			double pprice = rst.getDouble(4);  
+			String imgURL = rst.getString(5);
 			// For each product create a link of the form: addcart.jsp?id=productId&name=productName&price=productPrice
-			out.print("<tr><td><a href = \"addcart.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">Add to Cart</a></td>");
+			out.print("<tr><td><img src=\"" + imgURL + "\" width =\"200\" height=\"100\"><a href = \"addcart.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">Add to Cart</a></td>"); 
 			out.print("<td><a href = \"product.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">" + pname + "</a></td>");  
 			out.print("<td>" + cname + "</td>");  
 			out.print("<td>" + currFormat.format(pprice) + "</td></tr>"); 
