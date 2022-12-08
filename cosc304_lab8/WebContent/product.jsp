@@ -5,15 +5,9 @@
 
 <html>
 <head>
-<title>Ray's Grocery - Product Information</title>
-<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body
-            
-style = "background-color: lightblue;"
-></body>
+<body style = "background-color: lightblue;">
 
-<%@ include file="header.jsp" %>
 
 <%
 // Get product name to search for
@@ -24,7 +18,7 @@ String name = request.getParameter("name");
 String price = request.getParameter("price");
 out.print("<h2>" + name + "</h2>");
 
-String sql = "SELECT productImageURL, productImage FROM product WHERE productId = ?";
+String sql = "SELECT productImageURL, productImage, productDesc FROM product WHERE productId = ?";
 
 // TODO: If there is a productImageURL, display using IMG tag 
 	try {
@@ -38,13 +32,14 @@ String sql = "SELECT productImageURL, productImage FROM product WHERE productId 
             // TODO: Retrieve any image stored directly in database. Note: Call displayImage.jsp with product id as parameter. 
             // displayimage only catches buffer on safari / ff not chrome! 
             if(rst.getString(1) != null && rst.getBytes(2) != null) { 
-                out.print("<img src=\"" + rst.getString(1) + "\">"); 
-                out.print("<img src =\"displayImage.jsp?id=" + id + "\">");
+                out.print("<img src=\"" + rst.getString(1) + "\" width =\"500\" height=\"250\">"); 
+                out.print("<img src =\"displayImage.jsp?id=" + id + "\" width =\"500\" height=\"250\">");
             } else if(rst.getString(1) != null && rst.getBytes(2) == null) { 
-                out.print("<img src=\"" + rst.getString(1) + "\">"); 
+                out.print("<img src=\"" + rst.getString(1) + "\" width =\"500\" height=\"250\">"); 
             } else if(rst.getString(1) == null && rst.getBytes(2) != null) { 
-                out.print("<img src =\"displayImage.jsp?id=" + id + "\">");
+                out.print("<img src =\"displayImage.jsp?id=" + id + "\" width =\"500\" height=\"250\">");
             }
+            out.print("<h3>"+ rst.getString(3) +"</h3>");
 		} 
 	} catch (SQLException e) {
 		out.println("SQLException: " + e);  
@@ -59,4 +54,3 @@ out.println("<h3><a href = \"listprod.jsp\">Continue Shopping</a></h3>");
 
 </body>
 </html>
-
