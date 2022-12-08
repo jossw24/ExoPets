@@ -5,12 +5,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>YOUR NAME Grocery</title>
+	<style>
+		ul {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  overflow: hidden;
+		  background-color: #333;
+		  top: 0;
+		  width: 100%;
+		}
+
+		li {
+		  float: right;
+		}
+
+		li a {
+		  display: block;
+		  color: white;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+
+		li a:hover:not(.active) {
+		  background-color: #111;
+		}
+
+		.active {
+		  background-color: #0066e4;
+		}
+	</style>
 </head>
-<body
-            
-style = "background-color: lightblue;"
-></body>
+
+<body style = "background-color: lightblue;">
+
+<ul>
+	<li><a href="logout.jsp">Log Out</a></li>
+	<li><a href="listorder.jsp">Your Orders</a></li>
+	<li><a href="customer.jsp">Info</a></li>
+	<li><a class="active" href="listprod.jsp">Main</a></li>
+</ul>
 
 <h1>Search for the products you want to buy:</h1>
 
@@ -104,6 +139,5 @@ String query = "SELECT productId, productName, categoryName, productPrice FROM p
 // NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 // out.println(currFormat.format(5.0);	// Prints $5.00
 %>
-
 </body>
 </html>

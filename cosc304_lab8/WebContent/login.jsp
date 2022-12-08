@@ -33,13 +33,20 @@ if (session.getAttribute("loginMessage") != null)
 			font-size: 16px;
 		}
 	</style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 119593820ad9de566448c004c8e9f421b101f859
 <tr>
 	<td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Username:</font></div></td>
 	<td><input type="text" name="username"  size=10 maxlength=10></td>
 </tr>
+<<<<<<< HEAD
 
 <style>
+=======
+	<style>
+>>>>>>> 119593820ad9de566448c004c8e9f421b101f859
     td {
         padding: 10px;
         border: 3px solid rgb(151, 151, 152);
