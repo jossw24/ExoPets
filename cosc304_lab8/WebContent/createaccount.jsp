@@ -21,11 +21,11 @@ style = "background-color: lightblue;"
     %>
     
     <br>
-    <form name="MyForm" method=get >
+    <form action = "listprod.jsp" name="MyForm" method=get >
     <table style="display:inline">
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">First Name:</font></div></td>
-        <td><input type="firstName" name="firstName"  size=15 maxlength=20></td>
+        <td><input type="text" name="firstName"  size=15 maxlength=20></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Last Name:</font></div></td>
@@ -37,7 +37,7 @@ style = "background-color: lightblue;"
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Phone:</font></div></td>
-        <td><input type="phonenum" name="phonenum"  size=15 maxlength=20></td>
+        <td><input type="number" name="phonenum"  size=15 maxlength=10></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Address:</font></div></td>
@@ -45,19 +45,19 @@ style = "background-color: lightblue;"
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">City:</font></div></td>
-        <td><input type="city" name="city"  size=15 maxlength=20></td>
+        <td><input type="text" name="city"  size=15 maxlength=20></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">State:</font></div></td>
-        <td><input type="state" name="state"  size=15 maxlength=20></td>
+        <td><input type="text" name="state"  size=15 maxlength=2></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Postal Code:</font></div></td>
-        <td><input type="postalCode" name="postalCode"  size=15 maxlength=10></td>
+        <td><input type="postalCode" name="postalCode"  size=15 maxlength=7></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Country:</font></div></td>
-        <td><input type="country" name="country"  size=15 maxlength=20></td>
+        <td><input type="text" name="country"  size=15 maxlength=20></td>
     </tr>
     <tr>
         <td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Username:</font></div></td>
@@ -70,7 +70,8 @@ style = "background-color: lightblue;"
     </table>
     <br/>
     <input class="submit" type="submit" name="Submit2" value="Create Account" >
-    <h1><a href = "listprod.jsp"> Start Shopping </a></h1>
+
+
     </form>
     
     </div>
@@ -113,6 +114,7 @@ style = "background-color: lightblue;"
     }
 
     %>
+
 
 </body>
 </head>
