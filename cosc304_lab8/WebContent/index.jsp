@@ -25,27 +25,10 @@ style = "background-color: lightblue;"
 
 
                 <div style="text-align: center;">
-                        <img src="img/capybara-square-1.jpg.optimal.jpg" width="280" height="250" z-index: 1; border: 4px solid purple;"" />
-                        <img src="img/download.jpg" width="300" height="250" z-index: 1; border: 4px solid purple;" />
-                        <img src="img/SeaQuests-Guide-to-Axolotls-img-900x450.webp" width="305" height="250" z-index: 1; border: 4px solid purple;" />
+                        <img src="img/9.jpg" width="280" height="250" z-index: 1;" />
+                        <img src="img/20.jpg" width="300" height="250" z-index: 1;" />
+                        <img src="img/21.jpg" width="305" height="250" z-index: 1;" />
                       </div>
-<<<<<<< HEAD
-
-<p style = "text-align: left" ><span style = "font-family:monospace;font-size:20px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
-                border-color:#0e0d0d; border-radius:15px">
-                <a href="customer.jsp"> Customer Info </a> </span></p>
-
-<p style = "text-align: left" ><span style = "font-family:monospace;font-size:20px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
-                        border-color:#0e0d0d; border-radius:15px">
-                        <a href="admin.jsp"> Administrators </a> </span></p>
-
- <p style = "text-align: left" ><span style = "font-family:monospace;font-size:20px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
-                                border-color:#0e0d0d; border-radius:15px">
-                                <a href="logout.jsp"> Logout </a> </span></p>
-                        
-=======
-</div>
->>>>>>> 119593820ad9de566448c004c8e9f421b101f859
 </body>
 </head>
 
