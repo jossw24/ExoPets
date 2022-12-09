@@ -12,7 +12,7 @@ style = "background-color: lightblue;"
 ></body>
 
 <%
-String userName = (String) session.getAttribute("authenticatedUser");   
+//String userName = (String) session.getAttribute("authenticatedUser");   
 // TODO: Write SQL query that prints out total order amount by day
 String sql = "SELECT year(orderDate), month(orderDate), day(orderDate), SUM(totalAmount) FROM ordersummary GROUP BY year(orderDate), month(orderDate), day(orderDate)"; 
 
@@ -37,6 +37,9 @@ try {
 }
 
 %> 
+<p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
+    border-color:#0e0d0d; border-radius:15px">
+            <a href="listprod.jsp"> Home</a> </span></p>
 
 </body>
 </html>
