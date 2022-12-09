@@ -121,7 +121,7 @@ else{
                 out.println("<h1>Order completed. Will be shipped soon...</h1>");
                 out.println("<h1>Your order reference number is: "+orderId+"</h1>");
                 out.println("<h1>Shipping to customer: "+custId+" Name: " + custName+"</h1>");
-                out.print("<h2><a href=\"index.jsp\"> Return to shopping</a></h2>");
+                out.print("<h2><a href=\"listprod.jsp\"> Return to shopping</a></h2>");
                 session.setAttribute("productList", null);
 
         }

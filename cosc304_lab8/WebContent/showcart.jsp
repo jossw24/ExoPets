@@ -31,7 +31,7 @@ else
 	out.println("<h1>Cart Summary </h1>");
 	
 
-	out.print("<table><tr><th>Product Name</th><th>Quantity</th>");
+	out.print("<table border=\"3\"><tr><th>Product Name</th><th>Quantity</th>");
 	out.println("<th>Price</th><th>Subtotal</th></tr>");
 
 	double total =0;
@@ -45,10 +45,9 @@ else
 			continue;
 		}
 		
-		//out.print("<tr><td>"+product.get(0)+"</td>");
 		out.print("<td>"+product.get(1)+"</td>");
 
-		out.print("<td align=\"center\">"+product.get(3)+"</td>");
+		out.print("<td border=\"1\" align=\"center\">"+product.get(3)+"</td>");
 		Object price = product.get(2);
 		Object itemqty = product.get(3);
 		double pr = 0;
@@ -74,18 +73,21 @@ else
 		out.print("<td align=\"left\">"+currFormat.format(pr)+"</td>");
 		out.print("<td align=\"left\">"+currFormat.format(pr*qty)+"</td></tr>");
 		out.println("</tr>");
-		total = total +pr*qty;
+		total = total+pr*qty;
 		totalQty = totalQty +qty;
 	}
-	out.println("<tr><td colspan=\"4\" align=\"Right\"><b>Order Total</b></td>"
+	out.println("</table>");
+
+	out.println("<tr><td colspan=\"4\" align=\"Right\"><b>Order Total: </b></td>"
 			+"<td align=\"left\">"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
-	out.println("<tr><td colspan=\"4\" align=\"Right\"><b> Items </b></td>"
+	out.println("<tr><td colspan=\"4\" align=\"Right\"><b> Items in Cart: </b></td>"
 		+"<td align=\"left\">"+totalQty +"</td></tr>");
-out.println("</table>");
 
-	out.println("<h2><a href=\"checkout.jsp\">Check Out</a></h2>");
 
+	out.println("<h2><font size =17><a href=\"checkout.jsp\">Check Out</a></font></h2>");
+
+	//trying to do product recommendation off of first item in cart
 	/* try {
 		getConnection(); 
 		Statement stmt = con.createStatement(); 
