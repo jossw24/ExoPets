@@ -103,6 +103,7 @@ style = "background-color: lightblue;"
         String userid = request.getParameter("userid");
         String password = request.getParameter("password");
         
+        out.print("<h1>" + "Valid data" + "</h1>");
         PreparedStatement pstmt = con.prepareStatement("INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
         pstmt.setString(1, firstName);
         pstmt.setString(2, lastName);

@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.util.Map" %>
+<%@ include file="jdbc.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@ style = "background-color: lightblue;"
 // Get the current list of products
 @SuppressWarnings({"unchecked"})
 HashMap<String, ArrayList<Object>> productList = (HashMap<String, ArrayList<Object>>) session.getAttribute("productList");
-
+int totalQty = 0;
 if (productList == null)
 {	out.println("<H1>Your shopping cart is empty!</H1>");
 	productList = new HashMap<String, ArrayList<Object>>();
@@ -27,8 +28,10 @@ else
 {
 	NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 
-	out.println("<h1>Your Shopping Cart</h1>");
-	out.print("<table><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th>");
+	out.println("<h1>Cart Summary </h1>");
+	
+
+	out.print("<table><tr><th>Product Name</th><th>Quantity</th>");
 	out.println("<th>Price</th><th>Subtotal</th></tr>");
 
 	double total =0;
@@ -42,7 +45,7 @@ else
 			continue;
 		}
 		
-		out.print("<tr><td>"+product.get(0)+"</td>");
+		//out.print("<tr><td>"+product.get(0)+"</td>");
 		out.print("<td>"+product.get(1)+"</td>");
 
 		out.print("<td align=\"center\">"+product.get(3)+"</td>");
@@ -68,19 +71,53 @@ else
 			out.println("Invalid quantity for product: "+product.get(0)+" quantity: "+qty);
 		}		
 
-		out.print("<td align=\"right\">"+currFormat.format(pr)+"</td>");
-		out.print("<td align=\"right\">"+currFormat.format(pr*qty)+"</td></tr>");
+		out.print("<td align=\"left\">"+currFormat.format(pr)+"</td>");
+		out.print("<td align=\"left\">"+currFormat.format(pr*qty)+"</td></tr>");
 		out.println("</tr>");
 		total = total +pr*qty;
+		totalQty = totalQty +qty;
 	}
-	out.println("<tr><td colspan=\"4\" align=\"right\"><b>Order Total</b></td>"
-			+"<td align=\"right\">"+currFormat.format(total)+"</td></tr>");
+	out.println("<tr><td colspan=\"4\" align=\"Right\"><b>Order Total</b></td>"
+			+"<td align=\"left\">"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
+	out.println("<tr><td colspan=\"4\" align=\"Right\"><b> Items </b></td>"
+		+"<td align=\"left\">"+totalQty +"</td></tr>");
+out.println("</table>");
 
 	out.println("<h2><a href=\"checkout.jsp\">Check Out</a></h2>");
+
+	/* try {
+		getConnection(); 
+		Statement stmt = con.createStatement(); 
+		stmt.execute("USE orders"); 
+		PreparedStatement pstmt = con.prepareStatement(query);  
+
+		out.println("<table border=\"1\"><tr><th>Image</th><th>Product Name</th><th>Category</th><th>Price</th></tr>");
+			int id = product.get(0).getInt(1);
+			String pname = product.get(0).getString(2);  
+			String cname = product.get(0).getString(3); 
+			double pprice = product.get(0).getDouble(4);  
+			String imgURL = product.get(0).getString(5);
+			// For each product create a link of the form: addcart.jsp?id=productId&name=productName&price=productPrice
+			out.print("<tr><td><img src=\"" + imgURL + "\" width =\"200\" height=\"100\"><a href = \"addcart.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">Add to Cart</a></td>"); 
+			out.print("<td><a href = \"product.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">" + pname + "</a></td>");  
+			out.print("<td>" + cname + "</td>");  
+			out.print("<td>" + currFormat.format(pprice) + "</td></tr>"); 
+		} 
+		out.print("</table>"); 
+
+	} catch (SQLException e) {
+		out.println("SQLException: " + e);  
+	} finally { // Close connection
+		closeConnection(); 
+	}
+	*/
+
+
 }
 %>
 <h2><a href="listprod.jsp">Continue Shopping</a></h2>
+
 </body>
 </html> 
 
