@@ -9,14 +9,13 @@
 
 <html>
 <head>
-<title>YOUR NAME Grocery Shipment Processing</title>
+<title>ExoPets Shipping</title>
 </head>
 <body
             
 style = "background-color: lightblue;"
 ></body>
         
-<%@ include file="header.jsp" %>
 
 <%  // TODO: Get order id
 	String o = request.getParameter("orderid");  
@@ -114,7 +113,7 @@ style = "background-color: lightblue;"
 	// TODO: Auto-commit should be turned back on
 %>                       				
 
-<h2><a href="index.jsp">Back to Main Page</a></h2>
+<h2><a href="admin.jsp">Back to Admin</a></h2>
 
 </body>
 </html>

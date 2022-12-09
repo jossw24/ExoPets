@@ -50,10 +50,11 @@
 	<li style="float:right;"><a href="listprod.jsp">Main</a></li>
 </ul>
 
-<h1>Order List</h1>
+<h1>Your Orders</h1>
 
 <% 
-//Note: Forces loading of SQL Server driver
+//Note: Forces loading of SQL Server driver 
+int customerID = (int) session.getAttribute("authId"); 
 try
 {	// Load driver class
 	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -74,27 +75,28 @@ catch (java.lang.ClassNotFoundException e)
 
 // Making currency format 
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();		
-try (Connection con = DriverManager.getConnection(url, uid, pw); 
-	Statement stmt = con.createStatement();) 
+try (Connection con = DriverManager.getConnection(url, uid, pw);)
 {	// Write query to retrieve all order summary records 
-	ResultSet rst = stmt.executeQuery("SELECT orderId, customer.customerId, firstName, lastName, totalAmount FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId");
-	out.println("<table border=\"1\"><tr><th>OrderId</th><th>CustomerId</th><th>CustomerName</th><th>totalAmount</th></tr>"); 
+	PreparedStatement pstmt = con.prepareStatement("SELECT orderId, firstName, lastName, totalAmount,  FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId AND customer.customerId = ?");
+	pstmt.setInt(1, customerID);
+	ResultSet rst = pstmt.executeQuery(); 
+	out.println("<table border=\"1\"><tr><th>OrderId</th><th>Your Name</th><th>Shipping to Adresss</th<th>totalAmount</th></tr>"); 
 		// For each order in the ResultSet
 	while (rst.next()) {	 
 		out.print("<tr><td>" + rst.getInt(1) + "</td>"); 
-		out.print("<td>" + rst.getInt(2) + "</td>"); 
-		out.print("<td>" + rst.getString(3) + " " + rst.getString(4) + "</td>"); 
-		out.print("<td>" + currFormat.format(rst.getDouble(5)) + "</td></tr>");   
+		out.print("<td>" + rst.getString(2) + " " + rst.getString(3) + "</td>"); 
+		out.print("<td>" + currFormat.format(rst.getDouble(4)) + "</td></tr>");   
 		out.println("<tr align=\"right\"><td colspan=\"4\"><table border=\"1\">"); 
-		out.println("<tr><th>ProductId</th><th>Quantity</th><th>Price</th></tr>");
-		PreparedStatement pstmt2 = con.prepareStatement("SELECT productId, quantity, price FROM orderproduct WHERE orderId = ?"); 
+		out.println("<tr><th>ProductImage</th><th>ProductName</th><th>Quantity</th><th>Price</th></tr>");
+		PreparedStatement pstmt2 = con.prepareStatement("SELECT productImageURL, productName, quantity, price FROM orderproduct, product WHERE orderproduct.productId = product.productId AND orderId = ?"); 
 		pstmt2.setInt(1, rst.getInt(1)); 
 		ResultSet rst2 = pstmt2.executeQuery();  
 			// For each product in the order
 		while (rst2.next()) {  
-			out.print("<tr><td>" + rst2.getInt(1) + "</td>");
-			out.print("<td>" + rst2.getInt(2) + "</td>");
-			out.println("<td>" + currFormat.format(rst2.getDouble(3)) + "</td></tr>");
+			out.print("<tr><td><img src=\"" + rst2.getString(1) + "\" width =\"200\" height=\"100\"></td>");
+			out.print("<td>" + rst2.getString(2) + "</td>");
+			out.print("<td>" + rst2.getInt(3) + "</td>");
+			out.println("<td>" + currFormat.format(rst2.getDouble(4)) + "</td></tr>");
 		} 
 		out.println("</table></td></tr>");
 	}  

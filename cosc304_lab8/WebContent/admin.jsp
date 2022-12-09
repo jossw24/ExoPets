@@ -51,6 +51,11 @@
 </ul>
 
 <%
+
+Statement stmt = con.createStatement();) 
+	// Write query to retrieve all order summary records 
+	ResultSet rst = stmt.executeQuery("SELECT orderId, customer.customerId, firstName, lastName, totalAmount FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId");
+
 //String userName = (String) session.getAttribute("authenticatedUser");   
 // TODO: Write SQL query that prints out total order amount by day
 String sql = "SELECT year(orderDate), month(orderDate), day(orderDate), SUM(totalAmount) FROM ordersummary GROUP BY year(orderDate), month(orderDate), day(orderDate)"; 
