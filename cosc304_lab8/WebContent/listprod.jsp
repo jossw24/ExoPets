@@ -44,6 +44,10 @@
 	<li style="float:right;"><a href="listorder.jsp">Your Orders</a></li>
 	<li style="float:right;"><a href="showcart.jsp">Your Cart</a></li>
 	<li style="float:right;"><a href="customer.jsp">Info</a></li>
+	<% boolean admin = (boolean) session.getAttribute("isAdmin"); 
+		if(admin) 
+			out.print("<li style=\"float:right;\"><a href=\"admin.jsp\">Admin</a></li>");
+	%>
 	<li style="float:right;"><a class="active" href="listprod.jsp">Main</a></li>
 </ul>
 
@@ -51,7 +55,9 @@
 
 <form method="get" action="listprod.jsp"> 
 <select size=1 name ="categoryName"> 
-	<option value="All">All</option>
+	<option value="All">All</option> 
+	<option value="mostBought">Our Top Products</option> 
+	<option value="mostBoughtPersonal">Your Most Frequent Buys</option>
 	<option value="Fish">Fish</option> 
 	<option value="Mammals">Mammals</option> 
 	<option value="Birds">Birds</option> 
@@ -65,9 +71,10 @@
 <input type="submit" value="Submit"><input type="reset" value="Reset"> (Leave blank for all products)
 </form> 
 
-<% // Get product name and categoryName to search for
+<% // Get product name, customerId, and categoryName to search for
 String name = request.getParameter("productName"); 
-String catName = request.getParameter("categoryName"); 
+String catName = request.getParameter("categoryName");   
+int customerID = (int) session.getAttribute("authId"); 
 // Set header 
 String prodHeader;  
 if((name == null | name == "") && (catName == null))
@@ -100,6 +107,22 @@ if (catName == null || catName.equals("All"))
 NumberFormat currFormat = NumberFormat.getCurrencyInstance(); 
 String query = "SELECT productId, productName, categoryName, productPrice, productImageURL FROM product p, category c WHERE p.categoryId = c.categoryId AND productName LIKE ? AND categoryName LIKE ?"; 
 
+if(catName.equals("mostBought"))
+	query = "SELECT TOP 5 p.productId, productName, categoryName, productPrice, productImageURL" 
+	+" FROM product p, category c, orderproduct op WHERE p.categoryId = c.categoryId AND p.productId = op.productId" 
+	+" AND productName LIKE ?" 
+	+" GROUP BY p.productId, productName, categoryName, productPrice, productImageURL" 
+	+" ORDER BY SUM(quantity) DESC";
+
+
+else if(catName.equals("mostBoughtPersonal")) 
+	query = "SELECT TOP 5 p.productId, productName, categoryName, productPrice, productImageURL" 
+	+" FROM customer cu, ordersummary o, orderproduct op, product p, category c WHERE cu.customerId = o.customerId AND o.orderId = op.orderId AND op.productId = p.productId AND p.categoryId = c.categoryId" 
+	+" AND productName LIKE ? AND cu.customerId = ?" 
+	+" GROUP BY p.productId, productName, categoryName, productPrice, productImageURL" 
+	+" ORDER BY SUM(quantity) DESC"; 
+
+
 // Make the connection
 	try {
 		getConnection(); 
@@ -107,12 +130,16 @@ String query = "SELECT productId, productName, categoryName, productPrice, produ
 		stmt.execute("USE orders"); 
 		PreparedStatement pstmt = con.prepareStatement(query);  
 
+		if(catName.equals("mostBoughtPersonal")) 
+			pstmt.setInt(2, customerID);
+		else if(!catName.equals("mostBought"))
+			pstmt.setString(2, catName); 	
+
 		if ((name == null | name == ""))   
 			pstmt.setString(1, "%"); 
-		else 
+		else
 			pstmt.setString(1, "%" + name + "%");  
 
-		pstmt.setString(2, catName); 
 		ResultSet rst = pstmt.executeQuery();  
 		out.println("<table border=\"1\"><tr><th>Image</th><th>Product Name</th><th>Category</th><th>Price</th></tr>");
 		while(rst.next()) {   

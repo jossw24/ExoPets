@@ -40,6 +40,10 @@
 	<li style="float:right;"><a href="listorder.jsp">Your Orders</a></li>
 	<li style="float:right;"><a href="showcart.jsp">Your Cart</a></li>
 	<li style="float:right;"><a class="active" href="customer.jsp">Info</a></li>
+	<% boolean admin = (boolean) session.getAttribute("isAdmin"); 
+		if(admin) 
+			out.print("<li style=\"float:right;\"><a href=\"admin.jsp\">Admin</a></li>");
+	%>
 	<li style="float:right;"><a href="listprod.jsp">Main</a></li>
 </ul>
 

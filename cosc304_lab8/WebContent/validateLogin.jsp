@@ -23,6 +23,8 @@
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String retStr = null;
+		int custId = -1; 
+		boolean admin = false;
 
 		if(username == null || password == null)
 				return null;
@@ -35,14 +37,18 @@
 			stmt.execute("USE orders"); 
 
 			// TODO: Check if userId and password match some customer account. If so, set retStr to be the username.
-			String sql = "SELECT userid FROM customer WHERE userid = ? and password = ?"; 
+			String sql = "SELECT customerId, userid, isadmin FROM customer WHERE userid = ? and password = ?"; 
 			PreparedStatement pstmt = con.prepareStatement(sql); 
 			pstmt.setString(1, username); 
 			pstmt.setString(2, password);  
 			// assumes unique userid
 			ResultSet rst = pstmt.executeQuery();  
-			if(rst.next())  
-				retStr = rst.getString(1);
+			if(rst.next()) { 
+				custId = rst.getInt(1); 
+				retStr = rst.getString(2);
+				if(rst.getInt(3) == 1) 
+					admin = true;
+			}
 		}  
 		catch (SQLException ex) {
 			out.println(ex);
@@ -52,7 +58,9 @@
 		
 		if(retStr != null) {	
 			session.removeAttribute("loginMessage");
-			session.setAttribute("authenticatedUser", retStr);
+			session.setAttribute("authenticatedUser", retStr); 
+			session.setAttribute("authId", custId);
+			session.setAttribute("isAdmin", admin);
 		} else
 			session.setAttribute("loginMessage","Could not connect to the system using that username/password.");
 		
