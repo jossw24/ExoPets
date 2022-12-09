@@ -50,7 +50,7 @@ if (session.getAttribute("loginMessage") != null)
 </style>
 <tr>
 	<td><div align="right"><font face="Arial, Helvetica, sans-serif" size="2">Admin Password:</font></div></td>
-	<td><input type="password" name="password" size=10 maxlength="10"></td>
+	<td><input type="password" name="password" size=11 maxlength="10"></td>
 </tr>
 </table>
 <br/>
