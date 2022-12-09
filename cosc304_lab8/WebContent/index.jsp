@@ -29,6 +29,8 @@ style = "background-color: lightblue;"
                         <img src="img/20.jpg" width="300" height="250" z-index: 1;" />
                         <img src="img/21.jpg" width="305" height="250" z-index: 1;" />
                       </div>
+
+                        
 </body>
 </head>
 
