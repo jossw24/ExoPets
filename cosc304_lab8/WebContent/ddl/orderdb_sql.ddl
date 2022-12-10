@@ -184,14 +184,14 @@ INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Velo
 INSERT INTO warehouse(warehouseName) VALUES ('Main warehouse');
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (1, 1, 5, 9000);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (2, 1, 10, 190);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (3, 1, 3, 10);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (4, 1, 2, 22);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (5, 1, 6, 21.35);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (6, 1, 3, 25);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (7, 1, 1, 30);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (8, 1, 3, 40);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (9, 1, 2, 97);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 31);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (3, 1, 3, 3930);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (4, 1, 2, 2044);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (5, 1, 6, 4928.10);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (6, 1, 3, 3075);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (7, 1, 1, 10330);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (8, 1, 3, 3120);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (9, 1, 2, 1814);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 16314);
 
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password, isadmin) VALUES ('Arnold', 'Anderson', 'a.anderson@gmail.com', '204-111-2222', '103 AnyWhere Street', 'Winnipeg', 'MB', 'R3X 45T', 'Canada', 'arnold' , 'test', 1);
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Bobby', 'Brown', 'bobby.brown@hotmail.ca', '572-342-8911', '222 Bush Avenue', 'Boston', 'MA', '22222', 'United States', 'bobby' , 'bobby');
@@ -201,39 +201,39 @@ INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state
 
 -- Order 1 can be shipped as have enough inventory
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-10-15 10:25:55', 91.70)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-10-15 10:25:55', 1800)
 SELECT @orderId = @@IDENTITY
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 1, 1, 18)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 2, 21.35)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 10, 1, 31);
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 1, 1, 1800)
 
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 2, 1642)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 10, 1, 5438);
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (2, '2019-10-16 18:00:00', 106.75)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (2, '2019-10-16 18:00:00', 7080.70)
 SELECT @orderId = @@IDENTITY
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 5, 21.35);
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 5, 4106.75);
 
 -- Order 3 cannot be shipped as do not have enough inventory for item 7
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (3, '2019-10-15 3:30:22', 140)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (3, '2019-10-15 3:30:22', 33050.00)
 SELECT @orderId = @@IDENTITY
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 6, 2, 25)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 7, 3, 30);
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 6, 2, 2050)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 7, 3, 30990)
 
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (2, '2019-10-17 05:45:11', 327.85)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (2, '2019-10-17 05:45:11', 11,288.05)
 SELECT @orderId = @@IDENTITY
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 3, 4, 10)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 8, 3, 40)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 13, 3, 23.25)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 28, 2, 21.05)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 29, 4, 14);
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 3, 4, 5240)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 8, 3, 3120)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 13, 3, 52.05)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 27, 2, 2800)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 22, 4, 76);
 
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (5, '2019-10-15 10:25:55', 277.40)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (5, '2019-10-15 10:25:55', 3747.40)
 SELECT @orderId = @@IDENTITY
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 4, 21.35)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 19, 2, 81)
-INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 20, 3, 10);
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 5, 4, 3285.40)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 19, 2, 42)
+INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 20, 3, 420);
 
 -- New SQL DDL for ALL IMAGES
 UPDATE Product SET productImageURL = 'img/1.jpg' WHERE ProductId = 1;
