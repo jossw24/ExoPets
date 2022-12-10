@@ -201,7 +201,7 @@ INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state
 
 -- Order 1 can be shipped as have enough inventory
 DECLARE @orderId int
-INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-10-15 10:25:55', 1800)
+INSERT INTO ordersummary (customerId, orderDate, totalAmount) VALUES (1, '2019-10-15 10:25:55', 8800)
 SELECT @orderId = @@IDENTITY
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 1, 1, 1800)
 
