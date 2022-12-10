@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html> 
 <head>
-<title>YOUR NAME Grocery Order List</title>
+<title>Your Orders</title>
 	<style>
 		ul {
 		list-style-type: none;
