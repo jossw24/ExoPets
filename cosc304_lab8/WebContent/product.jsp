@@ -6,7 +6,7 @@
 <html>
 <head>
 </head>
-<body style = "background-color: lightblue;">
+<body style = "background-color: lightblue;"></body>
 
 
 <%
@@ -54,5 +54,3 @@ out.println("<h3><a href = \"listprod.jsp\">Continue Shopping</a></h3>");
 
 %>
 
-</body>
-</html>
