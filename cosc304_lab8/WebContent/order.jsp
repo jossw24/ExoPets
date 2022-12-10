@@ -77,7 +77,7 @@ else{
             orderId = keys.getInt(1);
  
             out.print("<h1>Your Order Summary</h1>");
-            out.print("<table><tr><th>Product Id</th><th>Product Name</th>");
+            out.print("<table border=\"2\"><tr><th>Product Id</th><th>Product Name</th><th>Quantity</th><th>Price</th><th>Subtotal</th>");
             double total = 0;
 
             Iterator<Map.Entry<String, ArrayList<Object>>> iterator = productList.entrySet().iterator();
@@ -109,7 +109,7 @@ else{
  
                 }
 
-                out.println("<tr><td colspan=\"4\" align =\"right\"><b>OrderTotal</b></td><td align=\"right\">"+curFormat.format(total)+"</td>");
+                out.println("<tr><td colspan=\"4\" align =\"left\"><b>OrderTotal</b></td><td align=\"right\">"+curFormat.format(total)+"</td>");
                 out.println("</table>");
 
                 sql = "UPDATE OrderSummary SET totalAmount = ? WHERE orderId = ? ";
