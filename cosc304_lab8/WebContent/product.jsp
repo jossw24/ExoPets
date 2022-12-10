@@ -54,9 +54,5 @@ out.println("<h3><a href = \"listprod.jsp\">Continue Shopping</a></h3>");
 
 %>
 
- <form method="post" action="review.jsp">
-    <input type="submit" value="Create a review"/>
-  </form>
-
 </body>
 </html>
