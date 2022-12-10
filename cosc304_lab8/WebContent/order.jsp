@@ -104,7 +104,7 @@ else{
                 pstmt.setInt(1, orderId);
                 pstmt.setInt(2, Integer.parseInt(productId));
                 pstmt.setInt(3, qty);
-                pstmt.setString(4, price); 
+                pstmt.setString(4, price);
                 pstmt.executeUpdate();
  
                 }
@@ -118,7 +118,26 @@ else{
                 pstmt.setInt(2, orderId);
                 pstmt.executeUpdate();
 
-                out.println("<h1>Order completed. Will be shipped soon...</h1>");
+                String custtId = request.getParameter("customerId");
+            
+                String sql2 = "SELECT address, city, state, postalCode, country FROM customer WHERE customerId = ?";
+                PreparedStatement pstmt2 = con.prepareStatement(sql2);
+                pstmt2.setString(1, custtId);
+
+                ResultSet rst2 = pstmt2.executeQuery();
+                out.println("<h1>Order completed. Will be shipped soon to: </h1>");
+                
+                out.println("<table border=\"2\"><tr><th>Address</th><th>City</th><th>State</th><th>Postal Code</th> <th>Country</th></tr>");
+                while(rst2.next()) {
+                    out.print("<tr><td>" + rst2.getString(1) + "</td>");
+                    out.print("<td>" + rst2.getString(2) + "</td>");
+                    out.print("<td>" + rst2.getString(3) + "</td>");
+                    out.print("<td>" + rst2.getString(4) + "</td>");
+                    out.print("<td>" + rst2.getString(5) + "</td></tr>");
+
+                }
+                out.print("</table>");
+            
                 out.println("<h1>Your order reference number is: "+orderId+"</h1>");
                 out.println("<h1>Shipping to customer: "+custId+" Name: " + custName+"</h1>");
                 out.print("<h2><a href=\"listprod.jsp\"> Return to shopping</a></h2>");
