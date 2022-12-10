@@ -13,7 +13,6 @@
 		  width: 100%;
 		}
 
-
 		li a {
 		  display: block;
 		  color: white;

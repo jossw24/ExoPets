@@ -7,6 +7,22 @@
 <html>
 <head>
         <title>ExoPet</title>
+        <style>
+            textarea {
+              width: 35%; /* Set the width of the textarea */
+              height: 20%;
+              padding: 5x; /* Add some padding to the element */
+              border: 5px solid #337ab7; /* Add a border to the element */
+              border-radius: 5px; /* Round the corners of the element */
+              box-sizing: border-box; /* Make sure the element's content is resized properly */
+            }
+          </style>
+            <style>
+                form {
+              font-family: cursive; /* Set the font of the form to cursive */
+              color: #337ab7; /* Set the color of the text to blue */
+            }
+            </style>
 </head>
 <body
         
@@ -16,9 +32,6 @@ style = "background-color: lightblue;"
 <p>Thank you for your review!</p>
 
 </body>
-
-
-
 
 <%
 try{

@@ -30,6 +30,12 @@ style = "background-color: lightblue;"
                         <img src="img/21.jpg" width="305" height="250" z-index: 1;" />
                       </div>
 
+<% 
+if(session.getAttribute("accConfirmation") != null)
+        out.println("<p style=\"text-align: center;\">"+session.getAttribute("accConfirmation").toString()+"</p>"); 
+session.removeAttribute("accConfirmation");
+%>
+
                         
 </body>
 </head>

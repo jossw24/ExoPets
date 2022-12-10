@@ -3,14 +3,7 @@
 <%@ page import="java.io.File" %>
 <%@ include file="jdbc.jsp" %>
 
-<html>
-<head>
-<title>Your Shopping Cart</title>
-</head>
-<body>
-
 <%
-out.print("<h1>Connecting to database.</h1><br><br>");
 
 getConnection();
 String fileName = "/usr/local/tomcat/webapps/shop/ddl/orderdb_sql.ddl";
@@ -38,15 +31,15 @@ try
         }
     }	 
     scanner.close();
+    response.sendRedirect("admin.jsp");
+    session.setAttribute("databaseConfirmation","Database has been reset");
     
-    out.print("<br><br><h1>Database loaded.</h1>"); 
 }
 catch (Exception e)
 {
     out.print(e);
+    session.setAttribute("databaseConfirmation","Issue with loading Database, could not reset");
 } finally { 
     closeConnection();
 }
 %>
-</body>
-</html> 

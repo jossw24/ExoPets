@@ -60,9 +60,14 @@
 border-color:#0e0d0d; border-radius:15px">
         <a href="manageprod.jsp">Manage Products</a> </span></p> 
 
-<form name="resetdata" method="POST" action="loaddata.jsp">
+<form name="resetdata" method="POST" action="adminloaddata.jsp">
     <input type = "submit" value = "Reload Database" />
 </form>
+
+<% if(session.getAttribute("databaseConfirmation") != null)
+        out.println("<p>"+session.getAttribute("databaseConfirmation").toString()+"</p>"); 
+    session.removeAttribute("databaseConfirmation");
+%>
 
 </body>
 </html>
