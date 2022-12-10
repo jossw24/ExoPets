@@ -92,6 +92,7 @@ else
 		
 		try
 		{
+			//getting the price
 			pr = Double.parseDouble(price.toString());
 		}
 		catch (Exception e)
@@ -100,13 +101,14 @@ else
 		}
 		try
 		{
+			//getting quantity 
 			qty = Integer.parseInt(itemqty.toString());
 		}
 		catch (Exception e)
 		{
 			out.println("Invalid quantity for product: "+product.get(0)+" quantity: "+qty);
 		}		
-
+		//printing price and total price
 		out.print("<td align=\"left\">"+currFormat.format(pr)+"</td>");
 		out.print("<td align=\"left\">"+currFormat.format(pr*qty)+"</td></tr>");
 		out.println("</tr>");
@@ -115,43 +117,18 @@ else
 	}
 	out.println("</table>");
 
+	//order total
 	out.println("<tr><td colspan=\"4\" align=\"Right\"><b>Order Total: </b></td>"
 			+"<td align=\"left\">"+currFormat.format(total)+"</td></tr>");
 	out.println("</table>");
+	
+	//total items in cart
 	out.println("<tr><td colspan=\"4\" align=\"Right\"><b> Items in Cart: </b></td>"
 		+"<td align=\"left\">"+totalQty +"</td></tr>");
 
 
+	//checkout button
 	out.println("<h2><font size =17><a href=\"checkout.jsp\">Check Out</a></font></h2>");
-
-	//trying to do product recommendation off of first item in cart
-	/* try {
-		getConnection(); 
-		Statement stmt = con.createStatement(); 
-		stmt.execute("USE orders"); 
-		PreparedStatement pstmt = con.prepareStatement(query);  
-
-		out.println("<table border=\"1\"><tr><th>Image</th><th>Product Name</th><th>Category</th><th>Price</th></tr>");
-			int id = product.get(0).getInt(1);
-			String pname = product.get(0).getString(2);  
-			String cname = product.get(0).getString(3); 
-			double pprice = product.get(0).getDouble(4);  
-			String imgURL = product.get(0).getString(5);
-			// For each product create a link of the form: addcart.jsp?id=productId&name=productName&price=productPrice
-			out.print("<tr><td><img src=\"" + imgURL + "\" width =\"200\" height=\"100\"><a href = \"addcart.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">Add to Cart</a></td>"); 
-			out.print("<td><a href = \"product.jsp?id=" + id + "&name=" + pname + "&price=" + pprice + "\">" + pname + "</a></td>");  
-			out.print("<td>" + cname + "</td>");  
-			out.print("<td>" + currFormat.format(pprice) + "</td></tr>"); 
-		} 
-		out.print("</table>"); 
-
-	} catch (SQLException e) {
-		out.println("SQLException: " + e);  
-	} finally { // Close connection
-		closeConnection(); 
-	}
-	*/
-
 
 }
 %>
