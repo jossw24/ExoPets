@@ -50,40 +50,19 @@
 	<li style="float:right;"><a href="listprod.jsp">Main</a></li>
 </ul>
 
-<%
-
-Statement stmt = con.createStatement();) 
-	// Write query to retrieve all order summary records 
-	ResultSet rst = stmt.executeQuery("SELECT orderId, customer.customerId, firstName, lastName, totalAmount FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId");
-
-//String userName = (String) session.getAttribute("authenticatedUser");   
-// TODO: Write SQL query that prints out total order amount by day
-String sql = "SELECT year(orderDate), month(orderDate), day(orderDate), SUM(totalAmount) FROM ordersummary GROUP BY year(orderDate), month(orderDate), day(orderDate)"; 
-
-try { 
-    getConnection(); 
-	Statement stmt = con.createStatement(); 
-	stmt.execute("USE orders");  
-	PreparedStatement pstmt = con.prepareStatement(sql); 
-	ResultSet rst = pstmt.executeQuery();  
-	out.print("<table border=\"1\">"); 
-    while(rst.next()) {  
-        String date = String.format("%s-%s-%s",rst.getString(1), rst.getString(2), rst.getString(3));  
-        String price = String.format("$%s", rst.getString(4));
-        out.print("<tr><td><b>Order Date</b></td><td><b>Total Order Amount</b></td</tr>"); 
-        out.print("<tr><td>" + date + "</td><td>" + price + "</td></tr>"); 
-    } 
-    out.print("</table>"); 
-} catch (SQLException ex) { 
-    out.println(ex);
-} finally { 
-    closeConnection();
-}
-
-%> 
 <p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
     border-color:#0e0d0d; border-radius:15px">
-            <a href="listprod.jsp"> Home</a> </span></p>
+            <a href="listallcust.jsp">List all customers</a> </span></p>
+<p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
+    border-color:#0e0d0d; border-radius:15px">
+            <a href="listallorders.jsp">List all Orders</a> </span></p> 
+<p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
+border-color:#0e0d0d; border-radius:15px">
+        <a href="manageprod.jsp">Manage Products</a> </span></p> 
+
+<form name="resetdata" method="POST" action="loaddata.jsp">
+    <input type = "submit" value = "Reload Database" />
+</form>
 
 </body>
 </html>

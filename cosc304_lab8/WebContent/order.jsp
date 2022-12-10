@@ -104,7 +104,7 @@ else{
                 pstmt.setInt(1, orderId);
                 pstmt.setInt(2, Integer.parseInt(productId));
                 pstmt.setInt(3, qty);
-                pstmt.setString(4, price);
+                pstmt.setString(4, price); 
                 pstmt.executeUpdate();
  
                 }

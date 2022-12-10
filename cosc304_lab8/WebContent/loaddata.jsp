@@ -39,12 +39,15 @@ try
     }	 
     scanner.close();
     
-    out.print("<br><br><h1>Database loaded.</h1>");
+    out.print("<br><br><h1>Database loaded.</h1>"); 
+    out.print("<h1><a href=\"admin.jsp\">Back to Admin Page</a></h1>");
 }
 catch (Exception e)
 {
     out.print(e);
-}  
+} finally { 
+    closeConnection();
+}
 %>
 </body>
 </html> 

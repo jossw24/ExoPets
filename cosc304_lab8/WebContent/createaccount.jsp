@@ -72,10 +72,6 @@ style = "background-color: lightblue;"
     <input class="submit" type="submit" name="Submit2" value="Create Account" >
     
     
-    
-    
-    
-    
     <p style = "text-align: center" ><span style = "font-family:monospace;font-size:45px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
         border-color:#0e0d0d; border-radius:15px">
                 <a href="index.jsp"> Start Shopping</a> </span></p>

@@ -192,24 +192,6 @@ INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (7,
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (8, 1, 3, 40);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (9, 1, 2, 97);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 31);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (11, 1, 5, 9000);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (12, 1, 10, 19);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (13, 1, 3, 10);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (14, 1, 2, 22);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (15, 1, 6, 21.35);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (16, 1, 3, 25);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (17, 1, 1, 30);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (18, 1, 3, 40);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (19, 1, 2, 97);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (20, 1, 3, 31);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (21, 1, 5, 9000);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (22, 1, 10, 19);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (23, 1, 3, 10);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (24, 1, 2, 22);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (25, 1, 6, 21.35);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (26, 1, 3, 25);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (27, 1, 1, 30);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (28, 1, 3, 40);
 
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password, isadmin) VALUES ('Arnold', 'Anderson', 'a.anderson@gmail.com', '204-111-2222', '103 AnyWhere Street', 'Winnipeg', 'MB', 'R3X 45T', 'Canada', 'arnold' , 'test', 1);
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Bobby', 'Brown', 'bobby.brown@hotmail.ca', '572-342-8911', '222 Bush Avenue', 'Boston', 'MA', '22222', 'United States', 'bobby' , 'bobby');

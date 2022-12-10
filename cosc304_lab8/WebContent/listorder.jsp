@@ -77,10 +77,10 @@ catch (java.lang.ClassNotFoundException e)
 NumberFormat currFormat = NumberFormat.getCurrencyInstance();		
 try (Connection con = DriverManager.getConnection(url, uid, pw);)
 {	// Write query to retrieve all order summary records 
-	PreparedStatement pstmt = con.prepareStatement("SELECT orderId, firstName, lastName, totalAmount,  FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId AND customer.customerId = ?");
+	PreparedStatement pstmt = con.prepareStatement("SELECT orderId, firstName, lastName, totalAmount FROM ordersummary, customer WHERE ordersummary.customerId = customer.customerId AND customer.customerId = ?");
 	pstmt.setInt(1, customerID);
 	ResultSet rst = pstmt.executeQuery(); 
-	out.println("<table border=\"1\"><tr><th>OrderId</th><th>Your Name</th><th>Shipping to Adresss</th<th>totalAmount</th></tr>"); 
+	out.println("<table border=\"1\"><tr><th>OrderId</th><th>Your Name</th><th>totalAmount</th></tr>"); 
 		// For each order in the ResultSet
 	while (rst.next()) {	 
 		out.print("<tr><td>" + rst.getInt(1) + "</td>"); 
@@ -102,8 +102,7 @@ try (Connection con = DriverManager.getConnection(url, uid, pw);)
 	}  
 	out.println("</table>");
 }
-catch (SQLException ex)
-{
+catch (SQLException ex) {
 	out.println("SQLException: " + ex);
 }
 %>
