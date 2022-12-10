@@ -167,8 +167,5 @@ else if(catName.equals("mostBoughtPersonal"))
 // NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 // out.println(currFormat.format(5.0);	// Prints $5.00
 %>
-<p style = "text-align: left" ><span style = "font-family:monospace;font-size:15px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6;
-	border-color:#0e0d0d; border-radius:15px">
-	<a href="adminlogin.jsp"> Administrator</a> </span></p>
 </body>
 </html>
