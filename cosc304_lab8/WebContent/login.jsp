@@ -53,9 +53,6 @@ if (session.getAttribute("loginMessage") != null)
 	<td><input type="password" name="password" size=10 maxlength="10"></td>
 </tr>
 </table>
-<br/>
-<input class="submit" type="submit" name="Submit2" value="Log In">
-<a href="forgot-password.jsp">Forgot password?</a>
 </form>
 
 </div>
