@@ -56,10 +56,6 @@
 <p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
     border-color:#0e0d0d; border-radius:15px">
             <a href="listallorders.jsp">List all Orders</a> </span></p> 
-<p style = "text-align: left" ><span style = "font-family:monospace;font-size:25px;color:#4db27c;border-width:2px;border-style:solid; background-color: #dfe3e6; 
-border-color:#0e0d0d; border-radius:15px">
-        <a href="manageprod.jsp">Manage Products</a> </span></p> 
-
 <form name="resetdata" method="POST" action="adminloaddata.jsp">
     <input type = "submit" value = "Reload Database" />
 </form>
