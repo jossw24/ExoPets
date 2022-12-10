@@ -167,5 +167,6 @@ else if(catName.equals("mostBoughtPersonal"))
 // NumberFormat currFormat = NumberFormat.getCurrencyInstance();
 // out.println(currFormat.format(5.0);	// Prints $5.00
 %>
+
 </body>
 </html>
